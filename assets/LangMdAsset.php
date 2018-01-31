@@ -7,7 +7,7 @@ use yii\web\YiiAsset;
 
 class LangMdAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/nikitakls/yii2-editor-markdown/assets/lang';
+    public $sourcePath = '@vendor/nikitakls/yii2-editor-md/assets/lang';
 
     /**
      * @inheritdoc
