@@ -1,0 +1,22 @@
+{
+    "name": "nikitakls/yii2-editor-md",
+    "description": "Markdown editor.md for Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","markdown","editor"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "nikitakls",
+            "email": "niktiakls@yandex.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/vin.editor.md": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "nikitakls\\markdown\\": ""
+        }
+    }
+}
