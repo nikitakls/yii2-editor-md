@@ -30,8 +30,6 @@ Once the extension is installed, simply use it in your code by:
 ```php
 <?php
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
 use nikitakls\markdown\EditorMdWidget;
 
 ?>
@@ -79,3 +77,68 @@ echo $form->field($model, 'info_md')->widget(EditorMdWidget::className(), [
 
 ```
 See more options [https://pandao.github.io/editor.md/en.html]
+
+Markdown behavior
+--------------
+This behavior save html render markdown in active record model attribute.
+You can use markdown behavior for ActiveRecord Model next:
+```
+use nikitakls\markdown\behaviors\MarkdownModelBehavior
+
+class Content extents ActiveRecord{
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => MarkdownModelBehavior::className(),
+                'sourceAttribute' => 'content',
+                'destinationAttribute' => 'clean_content',
+            ],
+        ];
+    }
+
+}
+```
+
+Markdown action for upload files
+--------------
+Configure you controller if you want to have upload image functionality:
+```
+use nikitakls\markdown\actions\UploadFileAction; 
+
+class ContentController extends Controller
+{
+
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+
+        return [
+            'upload-image' => [
+                'class' => UploadFileAction::class,
+                'url' => '@fileUrl/origin/puzzle/',
+                'path' => '@filePath/origin/puzzle/',
+                'thumbPath' => '@filePath/thumb/puzzle/',
+                'thumbUrl' => '@fileUrl/thumb/puzzle/',
+                'thumbs' => [
+                    'puzzle' => [
+                        'width' => 480,
+                        'height' => 320,
+                        'main' => true
+                    ],
+                ],
+                'unique' => true,
+                'validatorOptions' => [
+                    'maxWidth' => 1600,
+                    'maxHeight' => 1200
+                ]
+            ],
+        ];
+    }
+
+```
