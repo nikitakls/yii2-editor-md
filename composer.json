@@ -11,8 +11,8 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "*",
-        "bower-asset/vin.editor.md": "*"
+        "yiisoft/yii2": "^2.0.6",
+        "bower-asset/editor.md": "^1.5"
     },
     "autoload": {
         "psr-4": {
